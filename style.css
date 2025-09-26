@@ -1,0 +1,306 @@
+/* ===== GLOBAL ===== */
+:root {
+    --c-orange: #f22424;
+    --c-black: #000000;
+    --c-white: #ffffff;
+    --c-white2: #cfcfcf;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--c-black);
+    color: var(--c-white);
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: var(--c-white); }
+a:hover { color: var(--c-orange); }
+
+/* ===== HEADER ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+}
+
+header a.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--c-white);
+}
+
+header a.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--c-orange);
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
+}
+
+header nav a {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: 0.3s;
+    color: var(--c-white2);
+}
+
+header nav a:hover { background-color: var(--c-orange); color: var(--c-black); }
+header nav a.active { color: var(--c-orange); font-weight: 700; }
+header nav a.active:hover { background-color: var(--c-white); font-weight: 700; }
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        display: none;
+        z-index: 99;
+    }
+
+    header nav.open { display: flex; }
+    header nav a { font-size: 1.5rem; padding: 0.5rem 1rem; }
+    .menu-toggle { display: block; font-size: 2rem; cursor: pointer; color: var(--c-white); }
+}
+
+/* ===== HERO ===== */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9)),
+        url('img/hero.jpeg') center/cover no-repeat;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--c-orange);
+    margin: 0.5rem 0;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.hero button {
+    padding: 0.75rem 2rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--c-orange);
+    color: var(--c-black);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hero button:hover {
+    background-color: #d94c20;
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero h2 { font-size: 1.5rem; }
+}
+
+/* ===== SECTION ===== */
+.section {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--c-orange);
+}
+
+.section p, .section li {
+    font-size: 1rem;
+    color: var(--c-white2);
+    margin-bottom: 0.75rem;
+}
+
+.highlight-box {
+    background-color: rgba(242,84,36,0.15);
+    border-left: 4px solid var(--c-orange);
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    border-radius: 0.75rem;
+}
+
+.highlight-box h3 {
+    margin-bottom: 0.75rem;
+    color: var(--c-orange);
+    font-size: 1.25rem;
+}
+
+.highlight-box ul {
+    padding-left: 1.5rem;
+}
+
+.highlight-box ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(242,84,36,0.5);
+}
+
+@media (max-width: 768px) {
+    .gallery { grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); }
+}
+
+/* ===== CONTACT FORM ===== */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: var(--c-orange);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    background-color: rgba(43,47,54,0.8);
+    color: var(--c-white);
+    font-size: 1rem;
+    transition: border 0.3s, background 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border: 1px solid var(--c-orange);
+    background-color: rgba(43,47,54,1);
+}
+
+.contact-form button {
+    padding: 0.75rem 2rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: var(--c-orange);
+    color: var(--c-black);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: flex-start;
+}
+
+.contact-form button:hover {
+    background-color: #d94c20;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--c-white2);
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer .left {
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+footer .right {
+    display: flex;
+    gap: 1rem;
+}
+
+footer .right a {
+    color: var(--c-white2);
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+footer .right a:hover {
+    color: var(--c-orange);
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+
+    footer .right {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
